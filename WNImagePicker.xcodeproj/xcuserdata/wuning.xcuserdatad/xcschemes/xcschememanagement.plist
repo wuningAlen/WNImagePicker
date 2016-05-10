@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>WNImagePicker.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>7890DD791CE1B7DC00D2C3E5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7890DD921CE1B7DE00D2C3E5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7890DD9D1CE1B7DE00D2C3E5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

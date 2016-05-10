@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WNImagePicker">
+            <connections>
+                <outlet property="collectionLayout" destination="4ry-FB-8TX" id="3bd-0p-cB7"/>
+                <outlet property="collectionPhotos" destination="8UZ-JZ-Me2" id="MvZ-Lw-T5J"/>
+                <outlet property="imageSelected" destination="Rt7-vI-P3o" id="0dj-yT-vCx"/>
+                <outlet property="photoBgView" destination="MpC-Jg-cA0" id="JZ8-IH-nLH"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MpC-Jg-cA0">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rt7-vI-P3o">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="MpC-Jg-cA0" secondAttribute="height" multiplier="1:1" id="ZJW-Q2-FSp"/>
+                    </constraints>
+                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="8UZ-JZ-Me2">
+                    <rect key="frame" x="0.0" y="375" width="375" height="292"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <collectionViewLayout key="collectionViewLayout" id="4ry-FB-8TX" customClass="MutiCollectionLayout"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="oj2-6Y-Zjn"/>
+                        <outlet property="delegate" destination="-1" id="nHF-Ql-0Gw"/>
+                    </connections>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="MpC-Jg-cA0" secondAttribute="trailing" id="7Q9-GR-jKo"/>
+                <constraint firstItem="8UZ-JZ-Me2" firstAttribute="top" secondItem="MpC-Jg-cA0" secondAttribute="bottom" id="94Y-OK-Kob"/>
+                <constraint firstAttribute="trailing" secondItem="8UZ-JZ-Me2" secondAttribute="trailing" id="L7F-VN-HLg"/>
+                <constraint firstItem="MpC-Jg-cA0" firstAttribute="width" secondItem="MpC-Jg-cA0" secondAttribute="height" multiplier="1:1" id="R9M-UC-VTL"/>
+                <constraint firstAttribute="bottom" secondItem="8UZ-JZ-Me2" secondAttribute="bottom" id="S3w-8w-C7N"/>
+                <constraint firstItem="MpC-Jg-cA0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="SPH-Of-EH1"/>
+                <constraint firstItem="MpC-Jg-cA0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mgk-bP-GJb"/>
+                <constraint firstItem="8UZ-JZ-Me2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="u5g-YL-UYO"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+        </view>
+    </objects>
+</document>
