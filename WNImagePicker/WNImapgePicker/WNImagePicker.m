@@ -19,6 +19,8 @@
 
 
 #define SCALEMAX 2.0 //放缩的最大值
+#define WIDTHHEIGHTLIMETSCALE 3.0/4.0 //限制得到图片的 长宽比例
+
 //获取设备物理高度
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
 //获取设备物理宽度
@@ -193,6 +195,7 @@
     
     // 移动手势
     UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panView:)];
+    panGestureRecognizer.maximumNumberOfTouches = 1;
     [view addGestureRecognizer:panGestureRecognizer];
 }
 
@@ -200,11 +203,24 @@
 {
     CGFloat WHScale = theImage.size.width / theImage.size.height;
     
+    CGFloat rule = ScreenWidth * WIDTHHEIGHTLIMETSCALE;
     CGSize imageViewSize;
     if (WHScale > 1) {
-        imageViewSize = CGSizeMake(ScreenWidth, ScreenWidth/WHScale);
+        CGFloat height = ScreenWidth/WHScale;
+        if (height < rule) {
+            height = rule;
+            imageViewSize = CGSizeMake(height*WHScale, height);
+        }else{
+            imageViewSize = CGSizeMake(ScreenWidth, height);
+        }
     }else{
-        imageViewSize = CGSizeMake(ScreenWidth*WHScale, ScreenWidth);
+        CGFloat width = ScreenWidth*WHScale;
+        if (width < rule) {
+            width = rule;
+            imageViewSize = CGSizeMake(width, width/WHScale);
+        }else{
+            imageViewSize = CGSizeMake(width, ScreenWidth);
+        }
     }
     self.imageSelected.contentMode = UIViewContentModeScaleToFill;
     [self.imageSelected setImage:theImage];
@@ -215,6 +231,7 @@
     orginSize = self.imageSelected.frame.size;
 }
 
+#pragma mark -- 手势代码实现
 // 处理缩放手势
 - (void) pinchView:(UIPinchGestureRecognizer *)pinchGestureRecognizer
 {
@@ -228,7 +245,7 @@
     
     if (pinchGestureRecognizer.state == UIGestureRecognizerStateEnded) {
         CGFloat rule = view.width > view.height?view.width:view.height;
-        
+        CGFloat min = ScreenWidth * WIDTHHEIGHTLIMETSCALE;
         if (rule < ScreenWidth) {
             CGFloat width;
             CGFloat height;
@@ -238,6 +255,11 @@
             }else{
                 height = ScreenWidth;
                 width = ScreenWidth * view.width / view.height;
+            }
+            
+            if (width < min || height < min) {
+                width = orginSize.width;
+                height = orginSize.height;
             }
             
             [UIView animateWithDuration:0.2 animations:^{
@@ -253,6 +275,10 @@
                 height = SCALEMAX * orginSize.height;
                 width = SCALEMAX * orginSize.width;
             }
+            if (width < min || height < min) {
+                width = orginSize.width;
+                height = orginSize.height;
+            }
             [UIView animateWithDuration:0.2 animations:^{
                 view.width = width;
                 view.height = height;
@@ -263,7 +289,6 @@
     }
 }
 
-#pragma mark -- 手势代码实现
 // 处理拖拉手势
 - (void) panView:(UIPanGestureRecognizer *)panGestureRecognizer
 {
@@ -414,7 +439,9 @@
 #pragma mark -- ActionMethod
 - (void)leftBarAction
 {
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    if ([self.delegate respondsToSelector:@selector(onCancel:)]) {
+        [self.delegate onCancel:self];
+    }
 }
 
 - (void)rightBarAction
@@ -445,23 +472,11 @@
     
     CGRect rect = CGRectMake(imgX*scraled, imgY*scraled, imgW*scraled, imgH*scraled);
     
-    UIImage *imageCroped = [self.imageSelected.image getSubImage:rect];
-    
-    NSData *data = UIImageJPEGRepresentation(imageCroped, 0.8);
-    
-    float f = 0.8;
-    
-    for (int i = 0; i < 8; i ++) {
-        f -= 0.1;
-        data = UIImageJPEGRepresentation(imageCroped, f);
-        if (data.length < 200000) {
-            break;
-        }
+    UIImage *imageCut = [self.imageSelected.image getSubImage:rect];
+
+    if ([self.delegate respondsToSelector:@selector(getCutImage:controller:)]) {
+        [self.delegate getCutImage:imageCut controller:self];
     }
-    
-    ImageEditVC *vc = [[ImageEditVC alloc]init];
-    vc.image = imageCroped;
-    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)useCamera

@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class WNImagePicker;
+
+@protocol WNImagePickerDelegate <NSObject>
+
+- (void)getCutImage:(UIImage *)image controller:(WNImagePicker *)vc;
+
+- (void)onCancel:(WNImagePicker *)vc;
+@end
+
 @interface WNImagePicker : UIViewController
+
+@property (nonatomic, assign)id<WNImagePickerDelegate>delegate;
 
 @end

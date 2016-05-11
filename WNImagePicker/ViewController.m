@@ -8,8 +8,9 @@
 
 #import "ViewController.h"
 #import "WNImagePicker.h"
+#import "WNImapgePicker/ImageEditVC.h"
 
-@interface ViewController ()
+@interface ViewController ()<WNImagePickerDelegate>
 
 @end
 
@@ -27,7 +28,22 @@
 
 - (IBAction)onCamare:(id)sender {
     WNImagePicker *pickerVC  = [[WNImagePicker alloc]init];
+    pickerVC.delegate = self;
     UINavigationController *navVC = [[UINavigationController alloc]initWithRootViewController:pickerVC];
     [self presentViewController:navVC animated:YES completion:nil];
+}
+
+#pragma mark -- WNImagePickerDelegate
+- (void)getCutImage:(UIImage *)image controller:(WNImagePicker *)vc
+{
+    [vc.navigationController dismissViewControllerAnimated:NO completion:nil];
+    ImageEditVC *editVC = [[ImageEditVC alloc]init];
+    editVC.image = image;
+    [self.navigationController pushViewController:editVC animated:YES];
+}
+
+- (void)onCancel:(WNImagePicker *)vc
+{
+    [vc.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 @end
