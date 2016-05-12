@@ -26,6 +26,8 @@
 		7890DDCD1CE1BD3300D2C3E5 /* CAM1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7890DDCC1CE1BD3300D2C3E5 /* CAM1.png */; };
 		7890DDD11CE1D07E00D2C3E5 /* ImageEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7890DDCF1CE1D07E00D2C3E5 /* ImageEditVC.m */; };
 		7890DDD21CE1D07E00D2C3E5 /* ImageEditVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7890DDD01CE1D07E00D2C3E5 /* ImageEditVC.xib */; };
+		7890DDD61CE3048200D2C3E5 /* icon120.png in Resources */ = {isa = PBXBuildFile; fileRef = 7890DDD41CE3048200D2C3E5 /* icon120.png */; };
+		7890DDD71CE3048200D2C3E5 /* icon180.png in Resources */ = {isa = PBXBuildFile; fileRef = 7890DDD51CE3048200D2C3E5 /* icon180.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +82,8 @@
 		7890DDCE1CE1D07E00D2C3E5 /* ImageEditVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageEditVC.h; sourceTree = "<group>"; };
 		7890DDCF1CE1D07E00D2C3E5 /* ImageEditVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageEditVC.m; sourceTree = "<group>"; };
 		7890DDD01CE1D07E00D2C3E5 /* ImageEditVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageEditVC.xib; sourceTree = "<group>"; };
+		7890DDD41CE3048200D2C3E5 /* icon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon120.png; sourceTree = "<group>"; };
+		7890DDD51CE3048200D2C3E5 /* icon180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon180.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +151,8 @@
 		7890DD7D1CE1B7DD00D2C3E5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7890DDD41CE3048200D2C3E5 /* icon120.png */,
+				7890DDD51CE3048200D2C3E5 /* icon180.png */,
 				7890DD7E1CE1B7DD00D2C3E5 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -300,11 +306,13 @@
 			files = (
 				7890DD8D1CE1B7DE00D2C3E5 /* LaunchScreen.storyboard in Resources */,
 				7890DD8A1CE1B7DE00D2C3E5 /* Assets.xcassets in Resources */,
+				7890DDD61CE3048200D2C3E5 /* icon120.png in Resources */,
 				7890DDD21CE1D07E00D2C3E5 /* ImageEditVC.xib in Resources */,
 				7890DDBC1CE1BB2E00D2C3E5 /* AlbumPhotoCell.xib in Resources */,
 				7890DDCD1CE1BD3300D2C3E5 /* CAM1.png in Resources */,
 				7890DDC81CE1BB6400D2C3E5 /* WNImagePicker.xib in Resources */,
 				7890DD881CE1B7DD00D2C3E5 /* Main.storyboard in Resources */,
+				7890DDD71CE3048200D2C3E5 /* icon180.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,6 +572,7 @@
 				7890DDA91CE1B7DE00D2C3E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7890DDAA1CE1B7DE00D2C3E5 /* Build configuration list for PBXNativeTarget "WNImagePickerTests" */ = {
 			isa = XCConfigurationList;
@@ -572,6 +581,7 @@
 				7890DDAC1CE1B7DE00D2C3E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7890DDAD1CE1B7DE00D2C3E5 /* Build configuration list for PBXNativeTarget "WNImagePickerUITests" */ = {
 			isa = XCConfigurationList;
@@ -580,6 +590,7 @@
 				7890DDAF1CE1B7DE00D2C3E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

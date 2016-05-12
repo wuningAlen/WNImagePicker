@@ -17,7 +17,6 @@
 #import <AVFoundation/AVFoundation.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 
-
 #define SCALEMAX 2.0 //放缩的最大值
 #define WIDTHHEIGHTLIMETSCALE 3.0/4.0 //限制得到图片的 长宽比例
 
@@ -279,10 +278,18 @@
                 width = orginSize.width;
                 height = orginSize.height;
             }
+            CGPoint center = view.center;
+            if (width < ScreenWidth) {
+                center.x = view.superview.width / 2.0;
+            }
+            if (height < ScreenWidth) {
+                center.y = view.superview.height / 2.0;
+            }
+            
             [UIView animateWithDuration:0.2 animations:^{
                 view.width = width;
                 view.height = height;
-                view.center = CGPointMake(view.superview.width / 2.0, view.superview.height / 2.0);
+                view.center = center;
             }];
         }
         
